@@ -10,7 +10,7 @@ with their API more enjoyable.
 Quick Example
 -------------
 
-```
+```python
 import zookeeper
 
 # Create Zookeeper client instance
