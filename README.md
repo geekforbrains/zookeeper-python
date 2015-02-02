@@ -19,18 +19,22 @@ client = zookeeper.create_client(token='<access_token>')
 
 # Get user account details
 user = client.user.get_user()
-print user.profile()
+user_profile = user.profile()
 
-# Get the default notebook and the note within it
+
+# Get the default notebook and the notes within it
 notebook = client.notebooks.get_default()
-print notebook
-
 notes = notebook.get_notes()
-print notes
+
 
 # Get the tags for each note
 for note in notes:
   print note.get_tags()
 
+# Or get all tags in a notebook
+notebook_tags = notebook.get_tags()
+
+
 # Get the notebook associated with a note
-print notes[0].get_notebook()
+some_notebook = notes[0].get_notebook()
+```
