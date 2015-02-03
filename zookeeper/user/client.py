@@ -8,4 +8,4 @@ class ZKUserClient(object):
 
 
   def get_user(self):
-    return ZKUser(self.client.get_user_store())
+    return ZKUser(self.client)

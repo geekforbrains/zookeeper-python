@@ -1,6 +1,6 @@
 from evernote.api.client import EvernoteClient
 
-from .. import user, notebook
+from .. import user, notebook, note, tag
 
 
 class ZKClient(object):
@@ -17,6 +17,8 @@ class ZKClient(object):
 
     self.user = user.ZKUserClient(self)
     self.notebooks = notebook.ZKNotebookClient(self)
+    self.notes = note.ZKNoteClient(self)
+    self.tags = tag.ZKTagClient(self)
 
 
   def get_user_store(self):

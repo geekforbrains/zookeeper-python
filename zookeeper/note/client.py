@@ -33,7 +33,11 @@ class ZKNoteClient(object):
     result.includeUpdated = kwargs.get('include_updated', True)
     result.includeDeleted = kwargs.get('include_deleted', True)
     result.includeUpdateSequenceNum = kwargs.get('include_update_sequence_num', True)
+    result.includeNotebookGuid = kwargs.get('include_notebook_guid', True)
     result.includeTagGuids = kwargs.get('include_tag_guids', True)
+    result.includeAttributes = kwargs.get('include_attributes', False)
+    result.includeLargestResourceMime = kwargs.get('include_largest_resource_mime', False)
+    result.includeLargestResourceSize = kwargs.get('include_largest_resource_size', False)
 
     count = 0
     while True:
@@ -41,7 +45,7 @@ class ZKNoteClient(object):
       result = self.client.get_note_store().findNotesMetadata(filter, offset, EDAM_USER_NOTES_MAX, result)
 
       for en_note_metadata in result.notes:
-        notes.append(ZKNote(self, en_note_metadata))
+        notes.append(ZKNote(self.client, en_note_metadata))
 
       if (offset + EDAM_USER_NOTES_MAX) >= result.totalNotes:
         break

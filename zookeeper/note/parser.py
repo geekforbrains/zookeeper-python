@@ -1,0 +1,2 @@
+class ZKNoteParser(object):
+  pass
