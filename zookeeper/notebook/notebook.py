@@ -10,9 +10,9 @@ class ZKNotebook(object):
     self.notes = []
 
 
-  def get_notes(self, **kwargs):
+  def get_notes_metadata(self, **kwargs):
     """
-    Get all notes as ZKNote objects contained in this notebook.
+    Get all notes as ZKNoteMetadata objects contained in this notebook.
 
     """
     if not self.notes or kwargs.get('force_update', False):

@@ -1,25 +1,30 @@
-from ..tag import ZKTagClient
+from .notemetadata import ZKNoteMetadata
+from .parser import ZKNoteParser
 
 
-class ZKNote(object):
+class ZKNote(ZKNoteMetadata):
 
   def __init__(self, zk_client, en_note):
-    self.client = zk_client
-    self.note = en_note
+    super(ZKNote, self).__init__(zk_client, en_note)
+
+    # Additional properties not already set in ZKNoteMetadata
+    self.content = en_note.content
+    self.content_hash = en_note.contentHash
+    self.content_length = en_note.contentLength
+    self.resources = en_note.resources
 
 
-  def get_notebook(self):
+  def to_html(self):
     """
-    Get the notebook associated with this note.
-
-    """
-    return self.client.notebooks.get_by_guid(self.note.notebookGuid)
-
-
-  def get_tags(self):
-    """
-    Get all tags as ZKTag objects associated with this note.
+    Get the content of this note and convert it to HTML.
 
     """
-    for tag_guid in self.note.tagGuids:
-      return
+    pass
+
+
+  def to_markdown(self):
+    """
+    Get the content of this note and convert it to Markdown.
+
+    """
+    pas
