@@ -16,7 +16,7 @@ def normalize_enml(enml):
   lines etc.
 
   """
-  content = extract_contents(entml)
+  content = extract_contents(enml)
 
   content = content.replace('\xC2\xA0', ' ')
   content = content.encode('utf-8')
@@ -89,7 +89,7 @@ def enml_to_html(enml):
   Converts ENML to HTML markup.
 
   """
-  pass
+  return normalize_enml(enml)
 
 
 def enml_to_markdown(enml):

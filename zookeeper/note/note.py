@@ -1,5 +1,5 @@
 from .notemetadata import ZKNoteMetadata
-#import .parser
+from . import parser
 
 
 class ZKNote(ZKNoteMetadata):
@@ -14,15 +14,15 @@ class ZKNote(ZKNoteMetadata):
     self.resources = en_note.resources
 
 
-  def to_html(self, media_types=[]):
+  def to_html(self):
     """
     Get the content of this note and convert it to HTML.
 
     """
-    return parser.enml_to_html(self.content, media_types)
+    return parser.enml_to_html(self.content)
 
 
-  def to_markdown(self, allowed_html_tags=[], media_types=[]):
+  def to_markdown(self):
     """
     Get the content of this note and convert it to Markdown.
 
